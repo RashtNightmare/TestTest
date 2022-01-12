@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Payment;
+use App\Models\Test;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -171,5 +173,40 @@ class PaymentController extends Controller
     {
         Payment::query()->where('id', $id)->delete();
         return $this->index();
+    }
+    //--------------------------------------------------------------------------------------------------------------------
+    public $amount=0;
+    public function start(Request $request){
+      $change_price=[];
+      $products=$request->list;
+      foreach($products as $item){
+        $temp=Test::query()->where('id',$item['id'])->first();
+        if($item['date'] < Carbon::now()->subDay())
+         return response()->json([
+             'msg' => "The Test Has Been Expired",
+         ], 406);
+        
+        if($item["amount"] == $temp["amount"]){
+            $this->amount=$item['price']*$item['num'];        
+            continue;
         }
+        $item['price']=$temp;
+        array_push($change_price,$item);
+
+        if(count($change_price) > 0){
+            return response()->json([
+                'status'=>false,
+                'data' => $change_price
+            ],409);
+        }else{
+            $payment=Payment::create([
+                'user_id'=>Auth::id(),
+                'amount'=>$this->amount
+            ]);
+            foreach ($products as $item){
+                
+            }
+        }
+      }
+    }
 }

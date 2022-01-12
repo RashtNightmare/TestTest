@@ -28,9 +28,9 @@ class BuyBasketFactory extends Factory
 
         return [
             'amount'=>  $this->faker->numberBetween(10000,100000),
-            'status'=>$this->faker->numberBetween(1,4),
-            'test_id'=>$this->faker->numberBetween(1,4),
-            'user_id'=>$this->faker->numberBetween(1,4),
+            'status'=>$this->faker->numberBetween(1,3),
+            'test_id'=>$this->faker->numberBetween(1,3),
+            'user_id'=>$this->faker->numberBetween(1,3),
             'created_at'=>$date_create_update,
             'updated_at'=>$date_create_update
         ];

@@ -11,7 +11,7 @@ class LessonFactory extends Factory
      *
      * @return array
      */
-    protected $model = \App\Models\Question::class;
+    protected $model = \App\Models\Lesson::class;
     public function definition()
     {
         //'user_id','test_id','score','status','paid','canceled'
@@ -27,7 +27,7 @@ class LessonFactory extends Factory
         //`id`, `name`, `major_id`, `created_at`, `updated_at`
         return [
             'name'=>  $this->faker->name,
-            'major_id'=>$this->faker->numberBetween(1,4),
+            'major_id'=>$this->faker->numberBetween(1,3),
             'created_at'=>$date_create_update,
             'updated_at'=>$date_create_update
         ];

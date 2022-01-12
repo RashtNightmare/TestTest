@@ -17,14 +17,14 @@ class TestFactory extends Factory
         $date_create_update = $this->faker->dateTimeBetween('-1 day' );
         $hour=$this->faker->numberBetween(1,24);
         $min=$this->faker->numberBetween(1,59);
-        $years=stringValue($this->faker->numberBetween(1400,1401));
-        $months=stringValue($this->faker->numberBetween(1,12));
-        $days=stringValue($this->faker->numberBetween(1,30));
+        $years=(string)$this->faker->numberBetween(1400,1401);
+        $months=(string)$this->faker->numberBetween(1,12);
+        $days=(string)$this->faker->numberBetween(1,30);
         $date=$years.'/'.$months.'/'.$days;
-        $start_time=stringValue($hour).':'.stringValue($min);
+        $start_time=(string)$hour.':'.(string)$min;
         return [
-         `student_id` => $this->faker->numberBetween(1,4),
-         `teacher_id` => $this->faker->numberBetween(1,4),
+         `student_id` => $this->faker->numberBetween(1,3),
+         `teacher_id` => $this->faker->numberBetween(1,3),
          `score` => $this->faker->numberBetween(14,20),
          `acceptance_quorum` => $this->faker->numberBetween(17,20),
          `amount` => $this->faker->numberBetween(10000,100000),

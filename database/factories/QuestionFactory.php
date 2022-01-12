@@ -27,7 +27,7 @@ class QuestionFactory extends Factory
         // }
         //`id`, `text`, `option1`, `option2`, `option3`, `option4`, `true_answer`, `test_id`, `created_at`, `updated_at`
         return [
-            'name'=> $name,
+            // 'name'=> $name,
             'text'=> $TextForQuestion,
             'option1'=>  $this->faker->text,
             'option2'=> $this->faker->text,
